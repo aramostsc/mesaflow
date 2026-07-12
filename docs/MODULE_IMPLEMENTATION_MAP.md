@@ -30,3 +30,5 @@ Each application command receives:
 - expected entity version for concurrent mutations where applicable.
 
 Each command returns a normalized result and domain-safe error. Provider-specific errors never escape the adapter unchanged.
+
+Post-A0 module sequencing and ownership for S1-S3 are refined in `S1_S3_REESTIMATION.md`. No module boundary or screen ownership changes.

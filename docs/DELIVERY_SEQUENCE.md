@@ -174,3 +174,5 @@ Order:
 ## 4. Sequence change rule
 
 The Software Architect may recommend task-level reordering. The Project Manager may reallocate sprint placement. Neither may skip a gate, move a dependent product outcome ahead of a missing prerequisite, or declare a joint package complete through partial behavior.
+
+Post-A0 technical sequencing, estimates and readiness for DS-01 through DS-03 are maintained in `S1_S3_REESTIMATION.md`. The delivery outcomes and features remain canonical.

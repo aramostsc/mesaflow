@@ -55,7 +55,7 @@ No pre-existing repository document was modified. The package is additive and is
 
 ## Recommended stack
 
-TypeScript, Next.js, PostgreSQL, a PostgreSQL-backed worker/outbox, managed authentication, SSE or managed WebSockets, managed EU hosting and GitHub Actions. Vendor and ORM selections remain short implementation spikes rather than irreversible architecture commitments.
+TypeScript, Next.js, PostgreSQL, Drizzle, a PostgreSQL-backed worker/outbox, managed authentication, SSE or managed WebSockets, managed EU hosting and GitHub Actions. Provider selections remain short implementation spikes rather than irreversible architecture commitments.
 
 ## Risks
 
@@ -75,14 +75,14 @@ All have defined mitigations and verification requirements.
 
 ## Open questions
 
-Provider, ORM, realtime transport, exact retention and recovery objectives remain open. None changes the approved product scope. Production launch depends on resolving retention, data residency and recovery objectives.
+Provider, exact retention and recovery objectives remain open. ORM and SSE-first realtime proof are resolved by `ADR-009`, `ADR-010` and `ADR-012`. None changes the approved product scope. Production launch depends on resolving retention, data residency and recovery objectives.
 
 ## Gate status
 
 - **Does the architecture fully support the approved MVP?** Yes.
 - **Is the system sufficiently defined for the UX/UI Designer?** Yes. States, roles, degraded conditions, conflicts and device targets are defined.
 - **Is the system sufficiently defined for the Tech Lead?** Yes, subject to the listed implementation spikes.
-- **Are there blocking architectural decisions?** No for UX/UI; provider/ORM selections gate their respective implementation packages.
+- **Are there blocking architectural decisions?** No for UX/UI; the ORM decision is resolved by `ADR-009`, while provider selections still gate their respective implementation packages.
 - **Are there contradictions between documents?** No blocking contradiction identified.
 - **Are there unmitigated critical risks?** No; critical risks require verification before pilot.
 - **Was unapproved functionality introduced?** No.

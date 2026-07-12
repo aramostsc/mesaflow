@@ -24,6 +24,7 @@
 - Individual staff accounts; no shared PIN.
 - Session and membership revocation.
 - MFA readiness for administrators.
+- Provider SDKs isolated behind an application authentication port.
 
 ### Data protection
 - TLS in transit.
@@ -31,6 +32,7 @@
 - Hashed status tokens and secrets.
 - Secret manager for provider credentials.
 - Redaction of phone numbers, tokens and free-text notes from telemetry.
+- PostgreSQL RLS with transaction-local tenant context for tenant-owned data.
 
 ### Application security
 - Schema validation and output encoding.
@@ -57,3 +59,11 @@ Collect only name, phone, party details, approved preferences and operational no
 ## Security review
 
 A Security Engineer must review tenant isolation, public token design, webhook validation, retention, backup restoration and authorization tests before pilot.
+
+## A0 tenant isolation proof
+
+`ENG-A0-004` validates tenant isolation with a technical RLS probe. The proof confirms own-tenant reads, cross-tenant read denial, no-context denial, blocked cross-tenant inserts/updates/deletes and no tenant-context leakage after transaction commit.
+
+## A0 telemetry safety proof
+
+`ENG-A0-009` adds bounded structured logging with explicit redaction for credentials, authorization/cookie values, database URLs, phone numbers, private tokens and private message content. External correlation/request IDs are length- and format-validated before use. Serialized errors exclude stack traces and custom properties. Security tests under `tests/security` enforce these controls.

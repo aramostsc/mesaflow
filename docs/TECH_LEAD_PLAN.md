@@ -47,9 +47,9 @@ No blocking product, execution, architecture or UX contradiction was identified.
 | Next.js | Recommended baseline | Adopt unless A0 reveals a blocking limitation |
 | Modular monolith | Confirmed | Enforce module boundaries without microservices |
 | PostgreSQL | Confirmed | Use transactions, constraints and RLS |
-| Prisma vs Drizzle | Open spike | Decide in A0 using RLS, migration and transaction criteria |
-| Managed authentication | Open vendor | Implement interface first; select after EU/cost spike |
-| SSE | Recommended | Validate platform behaviour in A0 |
+| Prisma vs Drizzle | Drizzle selected by `ADR-009`; tenant context/RLS proved by `ADR-010` | Use SQL-reviewed Drizzle migrations and transaction-local tenant context |
+| Managed authentication | `AuthPort` defined; Supabase Auth recommended by `ADR-011` | Validate cost/session revocation/cookie handling before provider adapter rollout |
+| SSE | SSE-first proof accepted by `ADR-012` | Validate hosting/runtime behaviour before product rollout |
 | PostgreSQL outbox/worker | Confirmed | Implement before WhatsApp provider integration |
 | Hosting | Open vendor | Select EU managed platform after deployment spike |
 | WhatsApp provider | Open vendor | Select after capability and truthful-status spike |
@@ -73,4 +73,4 @@ A sprint cannot close when:
 
 ## 7. Immediate execution
 
-The first Codex implementation is `ENG-A0-001` through `ENG-A0-008`, followed by the S1 foundation slice. The first code-producing slice establishes repository structure, CI, local PostgreSQL, strict TypeScript, test harness, module boundaries and architecture-spike decisions. It does not claim completion of a product feature.
+The first Codex implementation is `ENG-A0-001` through `ENG-A0-010`, followed by the S1 foundation slice. The canonical A0 task list is maintained in `TECHNICAL_BACKLOG.md` and summarized by `FIRST_ENGINEERING_SPRINT.md`. The first code-producing slice establishes repository structure, CI, local PostgreSQL, strict TypeScript, test harness, module boundaries and architecture-spike decisions. It does not claim completion of a product feature.

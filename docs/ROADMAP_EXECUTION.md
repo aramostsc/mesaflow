@@ -103,3 +103,7 @@ Gate M6: release-level Definition of Done and pilot entry criteria pass.
 ## 5. Post-MVP boundary
 
 PBI-069 and above remain outside this roadmap unless Product Management records evidence, changes priority and updates affected approved documents. No post-MVP candidate may be inserted because it is technically convenient.
+
+## 6. Post-A0 execution note
+
+A0 is complete. The roadmap outcomes and feature allocations remain unchanged. `S1_S3_REESTIMATION.md` controls relative sizing/readiness for S1–S3, and `FIRST_PRODUCT_SPRINT.md` controls S1 entry. No calendar date is committed until team capacity and external authentication setup are confirmed.

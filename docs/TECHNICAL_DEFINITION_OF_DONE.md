@@ -18,5 +18,7 @@ A task is Done only when:
 14. The diff contains no unrelated changes.
 15. Reviewer approval is recorded.
 16. The final report lists files, tests, decisions, limitations and recommended next task.
+17. The GitHub Actions `quality` job and the equivalent local `db:ci` plus `verify` gates pass for merge-ready changes.
+18. New operational logs use structured context, validated external IDs and tested redaction through the shared observability boundary.
 
 “Works locally” or “screen exists” is not Done.

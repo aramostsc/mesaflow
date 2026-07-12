@@ -99,3 +99,5 @@ This document organizes execution only. It does not redefine strategy, product s
 ## 5. Handoff use
 
 The Software Architect should use this map to create technical work packages and trace each decision/task back to the affected feature. Engineering and QA should retain both `FEAT` and `PBI` identifiers in implementation and test records.
+
+`ENG-A0-010` preserves every feature-to-sprint mapping. `FIRST_PRODUCT_SPRINT.md` identifies the first S1 vertical slice, and `S1_S3_REESTIMATION.md` provides technical task traceability without claiming early feature completion.

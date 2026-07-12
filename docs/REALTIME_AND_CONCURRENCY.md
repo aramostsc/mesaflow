@@ -13,6 +13,10 @@ The MVP should use server-sent events or managed WebSockets for staff updates. T
 
 Realtime delivery is a notification mechanism, not the source of truth. PostgreSQL remains authoritative.
 
+`ENG-A0-006` proves the SSE-first strategy in `ADR-012` with a technical-only in-memory probe. The proof covers event serialization, heartbeat, replay after `lastEventId`, snapshot reconciliation and version-gap detection. Product waitlist events are still future work.
+
+`ENG-A0-007` proves the separate transactional outbox/worker pattern in `ADR-013`. Outbox processing may publish future events, but clients must still reconcile through authoritative queries because realtime delivery remains non-authoritative.
+
 ## Update envelope
 
 Each event includes:

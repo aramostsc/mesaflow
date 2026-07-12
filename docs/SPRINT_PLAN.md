@@ -69,3 +69,9 @@ The Project Manager may change sprint allocation after estimation when:
 - the Architect identifies a decomposition required to preserve behavior.
 
 Replanning may not move a dependent feature ahead of its prerequisite or remove a P0 outcome without Product Management approval.
+
+## 7. Re-estimation after A0
+
+`ENG-A0-010` completed the required evidence-based re-estimation. `S1_S3_REESTIMATION.md` is authoritative for relative task sizes, confidence, readiness, critical path and internal sequencing of S1–S3. `FIRST_PRODUCT_SPRINT.md` defines the S1 execution package.
+
+The canonical allocations in Section 3 do not change. S1, S2 and S3 are each XL relative packages under the current decomposition; they are not calendar commitments. Project Management must apply actual team capacity and may split an iteration operationally, but may not move dependent features or weaken the M1/M2 gates silently.

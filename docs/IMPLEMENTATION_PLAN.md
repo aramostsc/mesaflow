@@ -114,3 +114,7 @@ Every sprint includes:
 - unbounded retry loops;
 - logging raw customer contact data;
 - using disabled invalid lifecycle actions where UX requires omission.
+
+## 5. Post-A0 refinement
+
+`A0_CLOSURE_REPORT.md` records the evidence behind the foundation exit. `S1_S3_REESTIMATION.md` refines S1–S3 into dependency-safe relative estimates and makes the real auth adapter, capacity package, outcome correction and integrated sprint suites explicit. `FIRST_PRODUCT_SPRINT.md` is the next execution entry point.

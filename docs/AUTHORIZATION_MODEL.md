@@ -13,6 +13,8 @@ Use a managed authentication provider supporting email-based account creation, s
 
 Session cookies must be `HttpOnly`, `Secure` and `SameSite=Lax` or stricter. Browser tokens must not be stored in local storage.
 
+`ENG-A0-005` defines the provider-independent authentication port in `src/shared/auth` and recommends Supabase Auth for the next provider adapter spike. Authentication must stay separate from authorization and tenant context.
+
 ## Roles
 
 ### Administrator
