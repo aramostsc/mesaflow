@@ -41,9 +41,10 @@ Open service, accept entries manually or by QR, call, seat, no-show, reactivate,
 | UX-010 | No estimated wait or guaranteed position invented | outside approved capability/accuracy |
 | UX-011 | Invalid lifecycle actions are omitted | reduce errors and cognitive load |
 | UX-012 | Errors preserve form data and context | recovery must be faster than re-entry |
+| UX-013 | Reactivation is limited to current-service No-show entries | Cancelled is a terminal MVP outcome; UX must not expose Cancelled-to-Waiting recovery |
 
 ## Conflicts
-No blocking conflict was identified among the available approved product, execution and architecture baselines. Where wording or exact permission granularity is not explicit in UX documentation, capability checks remain controlled by the approved authorisation model rather than invented here.
+Lifecycle wording was aligned with the approved product state model: Cancelled is terminal in the MVP, and only current-service No-show entries may be reactivated to Waiting at the queue end. Where wording or exact permission granularity is not explicit in UX documentation, capability checks remain controlled by the approved authorisation model rather than invented here.
 
 ## Final validation
 - Core frequent actions fit within three actions.
