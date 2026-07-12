@@ -1,0 +1,52 @@
+{
+  "name": "mesaflow",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.13.1",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "format": "prettier --write package.json tsconfig.json next.config.ts eslint.config.mjs drizzle.config.ts .prettierrc.json docker-compose.yml \"drizzle/**/*.ts\" \"scripts/**/*.mjs\" \"src/**/*.{ts,tsx,css,md}\" \"tests/**/*.ts\" \".github/**/*.yml\"",
+    "format:check": "prettier --check package.json tsconfig.json next.config.ts eslint.config.mjs drizzle.config.ts .prettierrc.json docker-compose.yml \"drizzle/**/*.ts\" \"scripts/**/*.mjs\" \"src/**/*.{ts,tsx,css,md}\" \"tests/**/*.ts\" \".github/**/*.yml\"",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "next typegen && tsc --noEmit",
+    "quality": "corepack pnpm format:check && corepack pnpm lint && corepack pnpm typecheck",
+    "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:security": "vitest run --config vitest.security.config.ts",
+    "test:all": "corepack pnpm test && corepack pnpm test:integration && corepack pnpm test:security",
+    "db:up": "node scripts/db-command.mjs up",
+    "db:down": "node scripts/db-command.mjs down",
+    "db:status": "node scripts/db-command.mjs status",
+    "db:test": "node scripts/db-command.mjs test",
+    "db:migrate": "node scripts/db-command.mjs migrate && drizzle-kit migrate",
+    "db:reset:test": "node scripts/db-command.mjs reset-test && drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate",
+    "db:drizzle:migrate": "drizzle-kit migrate",
+    "db:check:migrations": "drizzle-kit check",
+    "db:ci": "corepack pnpm db:reset:test && corepack pnpm db:migrate && corepack pnpm db:test && corepack pnpm db:check:migrations",
+    "verify": "corepack pnpm quality && corepack pnpm test:all && corepack pnpm build"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.2",
+    "next": "16.2.10",
+    "pg": "8.16.3",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/react": "16.3.0",
+    "@types/node": "24.0.13",
+    "@types/pg": "8.16.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "9.31.0",
+    "eslint-config-next": "16.2.10",
+    "prettier": "3.6.2",
+    "typescript": "5.8.3",
+    "vitest": "3.2.4"
+  }
+}
