@@ -23,6 +23,12 @@ MesaFlow uses a shared application and shared PostgreSQL database with row-level
 6. Background jobs carry tenant context and validate ownership on load.
 7. Logs and metrics include tenant identifiers only in non-sensitive form.
 
+## A0 RLS proof
+
+`ENG-A0-004` proved the tenant context pattern with technical-only tables under `mesaflow_technical`. Tenant context is set inside a transaction using the PostgreSQL setting `mesaflow.tenant_id`, and RLS policies deny access when the setting is missing or mismatched.
+
+The proof uses a non-owner role without `BYPASSRLS`, `FORCE ROW LEVEL SECURITY` and negative integration tests. Product tables must implement their own reviewed policies; the probe tables are not product schema.
+
 ## Public access
 
 QR and status endpoints resolve a signed or random public credential to a tenant and establishment. A client-supplied tenant identifier is never trusted.

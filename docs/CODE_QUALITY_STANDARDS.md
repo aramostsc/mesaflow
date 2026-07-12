@@ -42,6 +42,9 @@
 - Redact phone numbers, tokens, cookies, provider payload secrets and authentication data.
 - Toasts are not the only presentation of important failures.
 - Operational degradation must be visible and recoverable.
+- Use the shared `LoggerPort`; do not emit secrets or unbounded request/provider payloads directly.
+- Treat incoming correlation/request IDs as untrusted and validate them before propagation.
+- Keep logging context separate from authentication, tenant context, audit IDs and idempotency keys.
 
 ## UI
 
@@ -60,6 +63,13 @@
 - Pin lockfile changes.
 - No duplicate libraries for the same purpose without Tech Lead approval.
 - Run security/license checks in CI.
+
+## Baseline quality gate
+
+- `corepack pnpm db:ci` rehearses technical migrations and validates the isolated PostgreSQL test environment.
+- `corepack pnpm verify` is the local and CI repository gate for format, lint, strict types, unit tests, integration tests, security tests and build.
+- Integration tests must fail when no matching tests are discovered.
+- The security-test command remains mandatory even while A0 has no product security suite.
 
 ## Comments and documentation
 

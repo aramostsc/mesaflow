@@ -39,10 +39,10 @@ From Waiting entry → Call → optimistic pending state → entry becomes Calle
 From Called entry → Seat → entry becomes Seated and leaves active waiting workload. If business rules permit seating directly from Waiting, present it under secondary actions and record the transition.
 
 ## UF-06 — Mark no-show
-From Called entry → No-show → confirmation sheet describing effect → confirm → entry becomes No-show → Undo offered for a short period or Reactivate remains available according to rules.
+From Called entry → No-show → confirmation sheet describing effect → confirm → entry becomes No-show → Reactivate remains available only where approved for current-service No-show entries.
 
-## UF-07 — Reactivate entry
-Open entry actions → Reactivate → system validates eligibility → entry returns to correct active position/state → audit trail records actor and reason when required.
+## UF-07 — Reactivate no-show
+Open eligible No-show entry actions → Reactivate → system validates eligibility → entry returns to Waiting at the queue end → audit trail records actor and time. Cancelled entries are terminal in the MVP and cannot be reactivated.
 
 ## UF-08 — Customer checks status
 Open tokenised status URL → view restaurant, party reference, current state and instructions → refresh automatically → leave queue action available. No position or time promise is shown unless explicitly approved by product rules.
@@ -68,6 +68,7 @@ stateDiagram-v2
     Called --> NoShow: Mark no-show
     Called --> Cancelled: Cancel
     NoShow --> Waiting: Reactivate
-    Cancelled --> Waiting: Reactivate if permitted
     Seated --> [*]
+    Cancelled --> [*]
+    NoShow --> [*]
 ```

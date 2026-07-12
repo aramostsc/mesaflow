@@ -15,9 +15,9 @@
 | Web framework | Next.js | Recommended | React + Fastify/NestJS | Need for independently deployed frontend/backend |
 | Backend structure | Modular application layer inside Next.js or companion Node process | Recommended | NestJS | Complexity of routes/use cases exceeds framework comfort |
 | Database | PostgreSQL | Confirmed recommendation | MySQL | No material trigger expected |
-| ORM/query | Prisma or Drizzle after spike | Hypothesis to validate | Kysely | RLS, migrations and transaction ergonomics |
-| Authentication | Managed provider | Recommended | Self-hosted auth | Cost, data residency or provider constraints |
-| Realtime | SSE first; managed WebSockets where platform fit is stronger | Recommended | Polling only | Bidirectional realtime needs |
+| ORM/query | Drizzle + Drizzle Kit | Accepted by `ADR-009` | Prisma, Kysely | RLS, migrations and transaction ergonomics |
+| Authentication | Managed provider behind `AuthPort`; Supabase Auth recommended by `ADR-011` | Recommended | Clerk, Auth.js, self-hosted auth | Cost, data residency or provider constraints |
+| Realtime | SSE first with reconciliation; proved by `ADR-012` | Recommended | Managed WebSockets, polling fallback | Hosting limits or bidirectional realtime needs |
 | Jobs | PostgreSQL-backed outbox and worker | Confirmed recommendation | Managed queue | Throughput or isolation need |
 | Hosting | Managed application platform in EU region | Recommended | Major cloud containers | Cost, residency, networking or scale |
 | Monitoring | Sentry-compatible errors + managed logs/metrics | Recommended | OpenTelemetry stack | Scale or vendor portability need |
@@ -28,6 +28,10 @@
 TypeScript enables one language across web, API and worker, supports rapid startup development and is well supported by Codex. PostgreSQL provides transactions, constraints, RLS and mature managed hosting.
 
 Next.js is recommended for fast delivery of public and authenticated web experiences. The domain/application code must remain framework-independent enough to move to a dedicated API process later.
+
+## Data-access decision
+
+`ENG-A0-003` selected Drizzle and Drizzle Kit in `docs/adr/ADR-009-data-access-layer-drizzle.md`. `ENG-A0-004` proved the tenant-context and RLS pattern in `docs/adr/ADR-010-tenant-context-and-rls-proof.md`.
 
 ## Provider decisions deferred
 

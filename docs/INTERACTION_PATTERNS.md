@@ -29,7 +29,7 @@ When another device updates an entry:
 Confirm only actions with meaningful cost: no-show, cancellation, closing intake/service, removing access. Do not confirm routine call or seat actions.
 
 ## Undo
-Prefer Undo for reversible operational mistakes. When Undo cannot be guaranteed, offer the valid recovery action such as Reactivate.
+Prefer Undo for reversible operational mistakes. When Undo cannot be guaranteed, offer only the approved recovery action, such as Reactivate for current-service No-show entries. Cancelled entries are terminal in the MVP.
 
 ## Keyboard
 Desktop shortcuts may support Add customer and search, but every action remains fully operable without shortcuts. Destructive shortcuts are prohibited.

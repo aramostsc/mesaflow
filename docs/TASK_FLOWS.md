@@ -12,7 +12,7 @@
 | Add customer | Host | Very high | 2–3 | 15–25s | invalid phone, duplicate, double submit | short form, defaults, inline validation, idempotency |
 | Call customer | Host | Very high | 1 | <3s | wrong entry, repeated click | row action, pending lock, clear identity |
 | Seat customer | Host | Very high | 1 | <3s | stale state | optimistic feedback + reconciliation |
-| Mark no-show | Host | High | 2 | <6s | accidental action | confirmation sheet + undo/reactivate |
+| Mark no-show | Host | High | 2 | <6s | accidental action | confirmation sheet + No-show reactivation when eligible |
 | View entry details | Staff | High | 1 | <2s | context loss | side panel, retain queue position |
 | Edit entry | Staff | Medium | 2–3 | <20s | concurrent edit | version conflict message, preserve input |
 | Retry message | Staff | Low | 2 | <8s | provider unavailable | non-blocking retry and status |

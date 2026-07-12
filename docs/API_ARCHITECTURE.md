@@ -11,6 +11,10 @@
 
 Use versioned JSON HTTP APIs under `/api/v1`. Staff endpoints use authenticated sessions. Public endpoints use QR credentials or entry-specific status tokens.
 
+Technical realtime proof for `ENG-A0-006` is documented in `REALTIME_ARCHITECTURE.md` and `ADR-012`. Product API routes for SSE are not implemented yet; future routes must preserve tenant-scoped authorization and reconciliation semantics.
+
+Technical outbox/worker proof for `ENG-A0-007` is documented in `OUTBOX_ARCHITECTURE.md` and `ADR-013`. Product APIs must enqueue future delivery/publication intent transactionally, but no product outbox event or provider route is implemented yet.
+
 ## Contract rules
 
 - Validate all input with shared schemas.
@@ -60,3 +64,5 @@ Apply stricter limits to public entry creation, token lookup, login, invitation 
 ## Observability
 
 Every request receives a correlation ID. Command logs include action, result, latency and non-sensitive identifiers. Phone numbers, tokens and notes must not be logged.
+
+Future route handlers must create execution context through the provider-independent boundary from `ENG-A0-009`. Incoming correlation/request headers are untrusted until UUID validation succeeds; invalid values are replaced. Tenant and user context must still come from separate authenticated server-side boundaries.

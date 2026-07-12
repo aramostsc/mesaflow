@@ -8,7 +8,7 @@
 
 ## In scope
 
-- `ENG-A0-001` through `ENG-A0-010`.
+- `ENG-A0-001` through `ENG-A0-010`, matching the canonical A0 task list in `TECHNICAL_BACKLOG.md`.
 - Repository scaffold and quality commands.
 - PostgreSQL local/test environment.
 - ORM decision spike.
@@ -83,8 +83,12 @@ pnpm db:reset:test
 - SSE reconnects and reconciles after a missed update;
 - outbox processing is atomic and idempotent;
 - logs are structured and redact sensitive data;
-- S1–S3 tasks are Ready and re-estimated;
+- S1–S3 tasks are re-estimated and classified as Ready, Conditionally Ready or Not Ready with exact dependencies;
 - Reviewer records no critical/high unresolved finding.
+
+## Closure
+
+All canonical tasks `ENG-A0-001` through `ENG-A0-010` are complete. Closure evidence is in `A0_CLOSURE_REPORT.md`; the next authorized execution entry is `FIRST_PRODUCT_SPRINT.md`. A0 completion does not claim any canonical product feature.
 
 ## Recommended Codex prompt
 

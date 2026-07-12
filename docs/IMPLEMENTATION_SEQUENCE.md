@@ -34,3 +34,11 @@ After A0, each slice should include database, application, API, UI, tests and do
 5. Integration and E2E tests.
 6. Security review.
 7. Documentation and final Reviewer gate.
+
+## Post-A0 S1-S3 sequence
+
+The detailed critical path is:
+
+`ENG-S1-001 -> ENG-S1-011 -> ENG-S1-002/003 -> ENG-S1-006/009/007 -> S1 Gate -> ENG-S2-001/007 -> ENG-S2-003/004/006 -> S2 Gate -> ENG-S3-001/002 -> ENG-S3-003/005/004 -> ENG-S3-006/M2`.
+
+Parallel work and prohibited concurrency are defined in `S1_S3_REESTIMATION.md`. This refines technical order without changing canonical sprint allocation.

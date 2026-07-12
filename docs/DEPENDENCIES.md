@@ -61,6 +61,9 @@ A delay on this path delays the first complete service.
 | EXT-05 | Pilot restaurant and rehearsal participants | PBI-060–068 | Pilot operations | Before M6 | Use realistic internal rehearsal; live pilot still blocked without operational owner |
 | EXT-06 | Engineering capacity and estimates | Calendar roadmap | Engineering + Project | End of A0 | Keep roadmap relative; do not publish dates |
 | EXT-07 | Incident ownership and support route | NFR-023, 067–070 | Project/Pilot operations | Before M6 | Block pilot start without named response path |
+| EXT-08 | Supabase EU project, credentials and session-cookie/revocation validation | ENG-S1-011, FEAT-001/004 | DevOps + Security | Before real S1 auth adapter acceptance | Continue schema work with `AuthPort` fake; use Clerk/Auth.js only through an approved fallback decision |
+| EXT-09 | Managed authentication email/invite configuration | ENG-S1-004, FEAT-004 | Product + DevOps | Before integrated invitation acceptance | Backend contract may use deterministic fake, but S1 gate remains conditional |
+| EXT-10 | Hosted SSE runtime/environment | ENG-S3-002, FEAT-027 | Architect + DevOps | Before hosted S3/M2 acceptance | Local SSE-first proof permits implementation; hosted gate remains open |
 
 ## 6. Full canonical feature dependencies
 
@@ -130,3 +133,5 @@ A delay on this path delays the first complete service.
 ## 7. Dependency readiness rule
 
 A dependency is Ready when its accepted interface/behavior is stable enough for the dependent item, the responsible owner is named, and any temporary test substitute cannot change final product behavior. A mock or stub does not satisfy final feature acceptance.
+
+Post-A0 dependency timing, alternatives and blocker status for S1-S3 are detailed in `S1_S3_REESTIMATION.md`.

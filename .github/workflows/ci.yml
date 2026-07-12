@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: mesaflow
+          POSTGRES_PASSWORD: mesaflow_local_password
+          POSTGRES_DB: mesaflow
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U mesaflow -d mesaflow"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    env:
+      DATABASE_URL: postgres://mesaflow:mesaflow_local_password@127.0.0.1:5432/mesaflow
+      TEST_DATABASE_URL: postgres://mesaflow:mesaflow_local_password@127.0.0.1:5432/mesaflow_test
+      POSTGRES_ADMIN_URL: postgres://mesaflow:mesaflow_local_password@127.0.0.1:5432/postgres
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.13.1 --activate
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Database quality gate
+        run: pnpm db:ci
+
+      - name: Repository quality gates
+        run: pnpm verify

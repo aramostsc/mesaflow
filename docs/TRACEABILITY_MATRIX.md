@@ -4,6 +4,13 @@ This is the initial implementation-level matrix. Feature-level acceptance refere
 
 | Strategic / product outcome | Canonical scope | UX | Technical modules | Initial tasks | Test evidence |
 |---|---|---|---|---|---|
+| Engineering foundation | Architecture, Technology Stack, A0 | n/a | MOD-001-015 foundation | ENG-A0-001-010 | scaffold, PostgreSQL, ORM, RLS, auth, realtime, outbox, migration rehearsal and CI quality gates |
+| Observability foundation | Observability, Security Architecture | n/a | MOD-015 foundation | ENG-A0-009 | structured logging, correlation/request context, redaction unit and security tests |
+| A0 closure and product-sprint readiness | Project/Sprint Plan, A0 | n/a | all foundation modules | ENG-A0-010 | closure evidence, S1-S3 estimates/readiness/gates and S1 prompts |
+| Authentication foundation | Authorization Model, Security Architecture, ADR-011 | n/a | MOD-001-004 foundation | ENG-A0-005, ENG-S1-002-005 | auth boundary unit tests and future provider adapter tests |
+| Realtime foundation | Realtime and Concurrency, ADR-012 | n/a | MOD-007 foundation | ENG-A0-006, ENG-S3-001-003 | SSE/reconnect/reconciliation unit tests and future two-device E2E |
+| Outbox worker foundation | Data Architecture, ADR-008, ADR-013 | n/a | MOD-009-010 foundation | ENG-A0-007, S6-S7 tasks | transactional outbox/worker integration tests and future provider idempotency tests |
+| Tenant isolation foundation | Multi-Tenancy, Security Architecture, ADR-010 | n/a | MOD-001-004, MOD-012 foundation | ENG-A0-004, ENG-S1-001-005 | RLS positive/negative integration tests |
 | Accountable restaurant context | FEAT-001–005 | S01, S11, S12, S18 | MOD-001–004, MOD-012 | ENG-S1-001–005, 009 | tenant/capability/invite E2E |
 | Open one active service | FEAT-020 | UF-01, S03, S04 | MOD-005, MOD-012 | ENG-S1-006–008 | concurrent-open integration + E2E |
 | Material action attribution | FEAT-055 | S06 activity | MOD-012 | ENG-S1-009 | append-only audit tests |
@@ -24,3 +31,5 @@ A task cannot move to `Em desenvolvimento` unless its row or source references i
 - relevant screen/flow when user-facing;
 - module;
 - expected automated evidence.
+
+Post-A0 task-to-feature estimates for S1-S3 are maintained in `S1_S3_REESTIMATION.md`; the S1 execution entry is `FIRST_PRODUCT_SPRINT.md`.

@@ -11,6 +11,10 @@
 
 PostgreSQL is the authoritative store. Relational constraints and transactions match the queue's consistency needs better than document or key-value stores.
 
+## Data access tooling
+
+`ENG-A0-003` selected Drizzle and Drizzle Kit as the data-access and migration tooling. Generated SQL migrations remain the review artifact, and advanced PostgreSQL behaviour such as RLS, transaction-local context, locks and partial indexes may use reviewed custom SQL.
+
 ## Conceptual entities
 
 - `tenants`
@@ -39,6 +43,10 @@ Use opaque UUIDv7 or ULID identifiers. Public URLs must never expose sequential 
 
 Every tenant-owned row shall include `tenant_id`. Establishment and service identifiers do not replace this requirement. Foreign keys should include or validate tenant ownership where practical.
 
+`ENG-A0-004` proved the default-deny RLS pattern for tenant-owned rows. Tenant context is transaction-local via `mesaflow.tenant_id`; no-context reads return no tenant-owned rows and no-context or mismatched writes are blocked by policies.
+
+`ENG-A0-007` proved a technical transactional outbox table under `mesaflow_technical`. The proof validates commit/rollback semantics, pending-only worker claiming, retry/failure handling and tenant-separated processing without creating product schema.
+
 ## Consistency
 
 All commands that change queue lifecycle, capacity or service state execute in one database transaction. The transaction must:
@@ -49,6 +57,8 @@ All commands that change queue lifecycle, capacity or service state execute in o
 4. persist the change;
 5. append audit and outbox records;
 6. commit before external delivery.
+
+The outbox worker must process committed intent asynchronously. A provider or publication failure must not roll back a committed queue transition.
 
 ## Concurrency
 
