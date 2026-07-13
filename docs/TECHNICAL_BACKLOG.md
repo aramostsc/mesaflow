@@ -23,7 +23,7 @@
 
 | ID | Title | Origin | Owner | Dependencies | Tests | Status |
 |---|---|---|---|---|---|---|
-| ENG-S1-001 | Persist Tenant, Establishment, User and Membership | FEAT-001–005 | Database | A0 | constraints, RLS, fixtures | Não iniciado |
+| ENG-S1-001 | Persist Tenant, Establishment, User and Membership | FEAT-001–005 | Database | A0 | constraints, RLS, fixtures | Concluído |
 | ENG-S1-002 | Resolve authenticated request context | Authorization model | Backend | S1-001, A0-005 | invalid/revoked/cross-tenant sessions | Não iniciado |
 | ENG-S1-003 | Implement capability authorization | FEAT-001–005 | Backend | S1-002 | capability matrix negative tests | Não iniciado |
 | ENG-S1-004 | Implement team invite/revoke APIs | FEAT-001–005 | Backend | S1-003 | invite/revoke/idempotency | Não iniciado |

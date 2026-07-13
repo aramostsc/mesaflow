@@ -51,3 +51,5 @@ Customers have no account. A private status token authorizes access to exactly o
 ## Revocation
 
 Removing a membership invalidates new authorization immediately and should revoke active sessions where supported. QR regeneration affects future public entry resolution but must not invalidate existing customer status links.
+
+Per `ADR-015`, removal means changing Membership from `active` to `revoked` and setting `revoked_at`; it is not physical deletion. A revoked row never authorizes access and is not reactivated. Readmission creates a new active tenant-level Membership. Actor/reason evidence belongs to the future transactional Audit Event flow.

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Completed `ENG-S1-001` with the first product Tenant, Establishment, canonical User and tenant-level active/revoked Membership schema, reviewed Drizzle migration, ownership/lifecycle constraints, forced default-deny RLS, fictional multi-tenant fixtures and PostgreSQL integration/security tests aligned with `ADR-015`.
+
 - Added the `ENG-A0-001` engineering scaffold with Next.js, strict TypeScript, lint, format, unit-test harness, CI and the approved base folder structure.
 - Completed `ENG-A0-002` PostgreSQL Docker Compose setup, local/test database scripts, technical migration, test database reset and connectivity smoke test.
 - Completed `ENG-A0-003` by selecting Drizzle and Drizzle Kit, with ADR, technical migration/query spike evidence and passing validation commands.

@@ -15,3 +15,8 @@
 - Sprint A0 is complete. The repository is ready to begin `ENG-S1-001`; provider-dependent S1 tasks remain conditional on their named external inputs.
 - No canonical `FEAT-*` product feature is implemented or marked complete.
 - Hosting, observability and messaging provider decisions remain deferred to later A0 tasks.
+
+## 2026-07-12
+
+- `ENG-S1-001` required fixes are implemented for independent re-review: the first product schema persists Tenant, Establishment, canonical User and tenant-level active/revoked Membership under `mesaflow` with UUID identifiers, reviewed Drizzle constraints, default-deny forced RLS, fictional fixtures and real PostgreSQL integration/security evidence aligned with `ADR-015`.
+- No authentication provider, session resolution, capability enforcement, invitation, API, UI, Service, Queue Entry or other product feature was implemented or marked complete.

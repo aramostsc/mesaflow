@@ -10,7 +10,7 @@ This is the initial implementation-level matrix. Feature-level acceptance refere
 | Authentication foundation | Authorization Model, Security Architecture, ADR-011 | n/a | MOD-001-004 foundation | ENG-A0-005, ENG-S1-002-005 | auth boundary unit tests and future provider adapter tests |
 | Realtime foundation | Realtime and Concurrency, ADR-012 | n/a | MOD-007 foundation | ENG-A0-006, ENG-S3-001-003 | SSE/reconnect/reconciliation unit tests and future two-device E2E |
 | Outbox worker foundation | Data Architecture, ADR-008, ADR-013 | n/a | MOD-009-010 foundation | ENG-A0-007, S6-S7 tasks | transactional outbox/worker integration tests and future provider idempotency tests |
-| Tenant isolation foundation | Multi-Tenancy, Security Architecture, ADR-010 | n/a | MOD-001-004, MOD-012 foundation | ENG-A0-004, ENG-S1-001-005 | RLS positive/negative integration tests |
+| Tenant isolation foundation | Multi-Tenancy, Security Architecture, ADR-010 | n/a | MOD-001-004, MOD-012 foundation | ENG-A0-004, ENG-S1-001-005 | A0 proof plus ENG-S1-001 product identity RLS positive/negative PostgreSQL tests |
 | Accountable restaurant context | FEAT-001–005 | S01, S11, S12, S18 | MOD-001–004, MOD-012 | ENG-S1-001–005, 009 | tenant/capability/invite E2E |
 | Open one active service | FEAT-020 | UF-01, S03, S04 | MOD-005, MOD-012 | ENG-S1-006–008 | concurrent-open integration + E2E |
 | Material action attribution | FEAT-055 | S06 activity | MOD-012 | ENG-S1-009 | append-only audit tests |

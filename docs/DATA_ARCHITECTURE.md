@@ -47,6 +47,12 @@ Every tenant-owned row shall include `tenant_id`. Establishment and service iden
 
 `ENG-A0-007` proved a technical transactional outbox table under `mesaflow_technical`. The proof validates commit/rollback semantics, pending-only worker claiming, retry/failure handling and tenant-separated processing without creating product schema.
 
+`ENG-S1-001` introduces the first product schema under `mesaflow`: `tenants`, `establishments`, `users` and tenant-level `memberships`. IDs are UUIDs, timestamps are timezone-aware, Membership has an active/revoked lifecycle with one active row per tenant/user, and User email is stored in canonical lowercase trimmed form. The A0 probe schema remains separate and unchanged. Per-establishment assignments are deferred by `ADR-015`.
+
+## Migration recovery
+
+Before publication, an unpublished migration may be corrected/regenerated and rehearsed through a clean local/test reset. Once applied outside disposable environments, a migration is never edited: corrections use a new forward-fix migration. With real data, changes use expand/migrate/contract, verified backups and operational restore when required. Application rollback does not imply destructive schema rollback, and automatic down migrations are not used. Destructive changes require a specific reviewed recovery plan.
+
 ## Consistency
 
 All commands that change queue lifecycle, capacity or service state execute in one database transaction. The transaction must:
