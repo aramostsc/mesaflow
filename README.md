@@ -31,6 +31,10 @@ corepack pnpm verify
 
 `verify` runs formatting, lint, strict type checking, unit tests, PostgreSQL integration tests, the security-test gate and the production build. See `docs/CI_AND_QUALITY_GATES.md` for the authoritative operational sequence.
 
+### Line endings
+
+Repository text files are stored as LF. `.gitattributes` is the Git authority, while EditorConfig and Prettier enforce the same policy in editors and quality gates. Contributors do not need to change their global `core.autocrlf` setting. Windows-native `.bat` and `.cmd` files retain CRLF; avoid unrelated EOL-only changes.
+
 Database product schema, realtime, outbox and provider adapter setup belong to later A0 tasks. `ENG-A0-003` selected Drizzle for data access tooling, and `ENG-A0-005` defined the authentication boundary.
 
 ## PostgreSQL local/test environment
