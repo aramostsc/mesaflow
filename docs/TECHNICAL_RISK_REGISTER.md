@@ -19,6 +19,10 @@
 | TR-015 | Retention/privacy procedure unresolved | Medium | High | Product/legal decision before pilot; configurable retention design | Product/Security | before S9/pilot |
 | TR-016 | Local PostgreSQL validation blocked by missing Docker/runtime | Low | Low | Docker runtime is now available and `db:*` validation passed; keep Docker availability documented for contributors | DevOps | mitigated in ENG-A0-002 |
 
+`ENG-S1-001` materially mitigates `TR-001` and `TR-006` for the product identity tables through forced default-deny RLS, a non-bypass role, transaction-local context, immutable Membership ownership and real negative operations. These risks remain active for every future product table and access path.
+
+Residual low risk: foreign-key or uniqueness failures can confirm existence when an attacker already knows an opaque global User UUID. Tenant code cannot list global users, errors must be normalized by future APIs, and UUIDs must remain unguessable; this is reviewed again with `ENG-S1-002` request resolution.
+
 ## Critical open decisions
 
 - Authentication adapter validation for Supabase Auth.

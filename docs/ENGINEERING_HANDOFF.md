@@ -92,3 +92,11 @@ Ready for Codex Engineering Phase
 Sprint A0 Complete
 
 Ready for `ENG-S1-001` via `FIRST_PRODUCT_SPRINT.md`
+
+## ENG-S1-001 update
+
+The first product persistence slice is available under the `mesaflow` schema and aligned with `ADR-015`. Tenant, Establishment, provider-independent User and tenant-level Membership use UUID identifiers, timezone-aware timestamps, canonical email, required establishment identity constraints and canonical Administrator/Staff roles. Membership uses active/revoked lifecycle history, one active row per tenant/user, immutable tenant/user identity and no physical delete. Tenant, Establishment and Membership use transaction-local default-deny forced RLS through the non-login, non-bypass `mesaflow_app` role; global users are not directly exposed to that role. Fictional multi-tenant fixtures and real positive/negative PostgreSQL tests pass. No authentication, authorization capabilities, invitations, assignments, settings, Service, API or UI were started.
+
+Migration `0003` was regenerated while unpublished. It may be reset/rehearsed only in disposable local/test databases. After publication it is immutable; corrections are forward-fix migrations, automatic down migrations are prohibited, and real-data changes require expand/migrate/contract plus verified backup/restore planning.
+
+Next review target: `ENG-S1-001` diff and migration. Do not begin `ENG-S1-002`; the approved sequence places `ENG-S1-011` next.

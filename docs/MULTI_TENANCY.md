@@ -29,6 +29,10 @@ MesaFlow uses a shared application and shared PostgreSQL database with row-level
 
 The proof uses a non-owner role without `BYPASSRLS`, `FORCE ROW LEVEL SECURITY` and negative integration tests. Product tables must implement their own reviewed policies; the probe tables are not product schema.
 
+## Product identity enforcement
+
+`ENG-S1-001` applies the proven pattern to `mesaflow.tenants`, `mesaflow.establishments` and tenant-level `mesaflow.memberships`. Policies use transaction-local `mesaflow.tenant_id`, include `USING` and `WITH CHECK`, force RLS, and default to denial without context. The `mesaflow_app` role is `NOLOGIN NOBYPASSRLS`. `users` is global and is not directly readable by that tenant role; tenant association is represented only by active Membership. Membership tenant/user identity is immutable, revocation preserves the row, and physical deletion is not granted. The MVP establishment is derived server-side after Membership resolution; no assignment table is introduced.
+
 ## Public access
 
 QR and status endpoints resolve a signed or random public credential to a tenant and establishment. A client-supplied tenant identifier is never trusted.
